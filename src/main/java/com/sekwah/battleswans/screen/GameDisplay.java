@@ -30,7 +30,7 @@ public class GameDisplay {
             int height = gd.getDisplayMode().getHeight();
 
             for(Dimension size : screenSizes){
-                if(width > size.getWidth() && height > size.getHeight() - 100){
+                if(width > size.getWidth() && height - 100 > size.getHeight()){
                     Display.setDisplayMode(new DisplayMode(size.getWidth(), size.getHeight()));
                     System.out.println("Width: " + size.getWidth() + " Height: " + size.getHeight());
                     break;
