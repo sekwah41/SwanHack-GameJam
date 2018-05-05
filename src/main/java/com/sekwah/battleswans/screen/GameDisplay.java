@@ -68,6 +68,11 @@ public class GameDisplay {
     public void update() {
         glClear(GL_COLOR_BUFFER_BIT);
 
+        if(game.currentStage == null) {
+            game.setIsRunning(false);
+            System.out.println("Stage is null");
+            return;
+        }
         game.currentStage.doUpdate();
 
         game.currentStage.doRender();
