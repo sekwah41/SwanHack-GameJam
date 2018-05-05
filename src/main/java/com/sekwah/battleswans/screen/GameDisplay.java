@@ -15,7 +15,7 @@ public class GameDisplay {
 
     private final BattleSwans game;
 
-    public Dimension[] screenSizes = {new Dimension(1920,1080),new Dimension(1680,1050), new Dimension(1366,768),
+    private Dimension[] screenSizes = {new Dimension(1920,1080),new Dimension(1680,1050), new Dimension(1366,768),
             new Dimension(1280,1024), new Dimension(1280,800), new Dimension(1024,768), new Dimension(800,500)};
 
     public GameDisplay(BattleSwans game) {
