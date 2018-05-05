@@ -39,6 +39,7 @@ public class BattleSwans {
             display.update();
         }
         display.destroy();
+        System.out.println("GAME WAS CLOSED *ANGRY HISSING*");
     }
 
     public void setIsRunning(boolean isRunning) {
