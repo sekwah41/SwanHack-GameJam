@@ -2,6 +2,7 @@ package com.sekwah.battleswans;
 
 import com.sekwah.battleswans.assets.Assets;
 import com.sekwah.battleswans.gamestages.Stage;
+import com.sekwah.battleswans.gamestages.StartStage;
 import com.sekwah.battleswans.screen.GameDisplay;
 import org.lwjgl.opengl.Display;
 
@@ -23,6 +24,8 @@ public class BattleSwans {
         assets = new Assets(this);
 
         display.init();
+
+        currentStage = new StartStage(this);
 
         start();
     }
