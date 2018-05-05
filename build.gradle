@@ -16,8 +16,8 @@ dependencies {
 }
 
 run {
-    systemProperty 'java.library.path', file( 'build/natives/windows')
-    //systemProperty 'java.library.path', file( 'build/natives/linux')
+    //systemProperty 'java.library.path', file( 'build/natives/windows')
+    systemProperty 'java.library.path', file( 'build/natives/linux')
     //systemProperty 'java.library.path', file( 'build/natives/osx')
 }
 
