@@ -2,7 +2,7 @@
 title Swanhack Game
 :A
 echo Checking for code update
-git fetch
+git pull
 pause
 echo Starting game
 call gradlew run
