@@ -5,6 +5,6 @@ echo Checking for code update
 git fetch
 pause
 echo Starting game
-call gradle run
+call gradlew run
 pause
 GOTO :A
