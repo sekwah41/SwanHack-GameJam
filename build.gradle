@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+mainClassName = "com.sekwah.swanhackgame.Main"
+
+project.ext.lwjglVersion = "3.0.0a"
+
+jar {
+    baseName = 'SwanHackGame'
+    version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'com.sekwah.swanhackgame.Main'
+    }
+}
