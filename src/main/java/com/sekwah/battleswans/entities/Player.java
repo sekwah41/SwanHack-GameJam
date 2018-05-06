@@ -45,6 +45,8 @@ public class Player extends Entity {
             playerWalkStage = 0;
         }
 
+        this.passDown = Keyboard.isKeyDown(Keyboard.KEY_S);
+
         speedBoost *= 0.5;
 
         if(Keyboard.isKeyDown(Keyboard.KEY_D)){

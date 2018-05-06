@@ -15,7 +15,7 @@ public class PlatformTile extends Tile {
     public void updateCollisions(Entity entity){
         // Rather rough collision system but good for now
         //willCollideX(entity);
-        if(entity.posY + (entity.height / 2F) <= this.posY - (this.height / 2F)) {
+        if(entity.posY + (entity.height / 2F) <= this.posY - (this.height / 2F) && !entity.passDown) {
             willCollideY(entity);
         }
         isOn(entity);
