@@ -51,6 +51,9 @@ public class TestStage extends Stage {
         super.doRender();
 
         GL11.glPushMatrix();
+        game.assets.rebindTexture(game.textures.background);
+        drawTexture(Display.getWidth() / 2f, Display.getHeight() / 2f + 40, game.assets.currentTextureSize.width,game.assets.currentTextureSize.height,
+                Display.getHeight() / game.assets.currentTextureSize.height + 0.93f);
         GL11.glTranslatef(cameraX + Display.getWidth() / 2,cameraY + Display.getHeight() / 2F,0);
         game.assets.rebindTexture(game.textures.testSpriteSheet);
         /*for(Entity entity: renderEntities){

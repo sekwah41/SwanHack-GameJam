@@ -11,6 +11,7 @@ public class CollisionTile extends Tile {
     }
 
     public void doRender(){
+        world.stage.game.assets.rebindTexture(world.stage.game.textures.brick);
         world.stage.drawTexture(posX, posY, (int)this.width, (int)this.height, 1, 0, 0);
     }
 }
