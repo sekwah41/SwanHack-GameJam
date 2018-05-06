@@ -13,12 +13,12 @@ public class TestWorld extends World {
         tiles[1] = new CollisionTile(this, 50,50);
         tiles[1].posY = 130;
 
-        tiles[3] = new PlatformTile(this, 100,50);
-        tiles[3].posY = 100;
-        tiles[3].posX = 100;
-
         tiles[2] = new CollisionTile(this, 500,50);
         tiles[2].posY = -100;
+
+        tiles[3] = new PlatformTile(this, 6);
+        tiles[3].posY = 100;
+        tiles[3].posX = 100;
     }
 
     public void doUpdate(long passedTime){

@@ -28,16 +28,16 @@ public class StartStage extends Stage {
         if(timeAlive < 400){
             float fade = ((float) timeAlive) / 400F;
             glColor3f(fade,fade,fade);
-            drawTexture(Display.getWidth() / 2, Display.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
+            drawTexture(game.getHeight() / 2, game.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
             glColor3f(1F,1F,1F);
         }
         else if(timeAlive < 3800){
-            drawTexture(Display.getWidth() / 2, Display.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
+            drawTexture(game.getWidth() / 2, game.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
         }
         else if(timeAlive < 4200){
             float fade = 1F - ((float) timeAlive - 3800F) / 400F;
             glColor3f(fade,fade,fade);
-            drawTexture(Display.getWidth() / 2, Display.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
+            drawTexture(Display.getWidth() / 2, game.getHeight() / 2, 1280, 524, Display.getWidth() / 1280F + scale);
             glColor3f(1F,1F,1F);
         }
         else if(timeAlive > 4300){

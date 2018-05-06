@@ -54,7 +54,7 @@ public class MainMenuStage extends Stage {
             glDisable(GL_TEXTURE_2D);
             float fade = (levelFade / 800F);
             glColor4f(0F, 0F, 0F, fade);
-            drawTexture(Display.getWidth()/ 2, Display.getHeight() / 2, 5, 5, 1000);
+            drawTexture(Display.getWidth()/ 2, game.getHeight() / 2, 5, 5, 1000);
             glColor4f(1F, 1F, 1F, 1F);
             glEnable(GL_TEXTURE_2D);
         }

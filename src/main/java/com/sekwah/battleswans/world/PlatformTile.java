@@ -4,8 +4,8 @@ import com.sekwah.battleswans.entities.Entity;
 
 public class PlatformTile extends Tile {
 
-    public PlatformTile(World world, float width, float height) {
-        super(world, width, height);
+    public PlatformTile(World world, float blocksWidth) {
+        super(world, blocksWidth * 14, 12);
     }
 
     public void doUpdate(long passedTime){
@@ -22,6 +22,7 @@ public class PlatformTile extends Tile {
     }
 
     public void doRender(){
+        world.stage.game.assets.rebindTexture(world.stage.game.textures.platform);
         world.stage.drawTexture(posX, posY, (int)this.width, (int)this.height, 1, 0, 0);
     }
 }

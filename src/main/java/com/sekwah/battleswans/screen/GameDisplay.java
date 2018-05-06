@@ -18,8 +18,9 @@ public class GameDisplay {
 
     private boolean fullscreen = false;
 
-/*    private Dimension[] screenSizes = {new Dimension(1920, 1080), new Dimension(1680, 1050), new Dimension(1366, 768),
-            new Dimension(1280, 1024), new Dimension(1280, 800), new Dimension(1024, 768), new Dimension(800, 500)};*/
+    private Dimension[] screenSizes = {new Dimension(1920, 1080), new Dimension(1680, 1050), new Dimension(1366, 768),
+            new Dimension(1280, 1024), new Dimension(1280, 800), new Dimension(1024, 768), new Dimension(800, 500)};
+    public Dimension screenSize;
 
     public GameDisplay(BattleSwans game) {
         this.game = game;
@@ -33,13 +34,14 @@ public class GameDisplay {
             int height = gd.getDisplayMode().getHeight();
 
             Display.setDisplayMode(new DisplayMode(width - 100, height - 100));
-            /*for (Dimension size : screenSizes) {
+            for (Dimension size : screenSizes) {
                 if (width > size.getWidth() && height - 100 > size.getHeight()) {
                     Display.setDisplayMode(new DisplayMode(size.getWidth(), size.getHeight()));
+                    this.screenSize = size;
                     System.out.println("Width: " + size.getWidth() + " Height: " + size.getHeight());
                     break;
                 }
-            }*/
+            }
 
             Display.setTitle("Battle Swans");
 
@@ -47,7 +49,7 @@ public class GameDisplay {
 
             Display.create();
 
-            Display.setLocation(Display.getX(), Display.getDesktopDisplayMode().getHeight() / 2 - (Display.getHeight() + 30) / 2);
+            Display.setLocation(Display.getX(), (int) (Display.getDesktopDisplayMode().getHeight() / 2 - (Display.getDesktopDisplayMode().getWidth() + 30) / 2));
 
             //Mouse.setGrabbed(true);
 
@@ -116,7 +118,7 @@ public class GameDisplay {
         Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
 
         glMatrixMode(GL_MATRIX_MODE);
-        //screenSize = new Dimension(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
+        screenSize = new Dimension(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
         glViewport(0, 0, Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
 
     }
@@ -131,14 +133,14 @@ public class GameDisplay {
 
         Display.setDisplayMode(new DisplayMode(width - 100, height - 100));
         glViewport(0, 0, width - 100, height - 100);
-        /*for(Dimension size : screenSizes){
+        for(Dimension size : screenSizes){
             if(width > size.getWidth() && height > size.getHeight()){
                 Display.setDisplayMode(new DisplayMode(size.getWidth(), size.getHeight()));
                 glViewport(0, 0, size.getWidth(), size.getHeight());
-                //screenSize = size;
+                screenSize = size;
                 break;
             }
-        }*/
+        }
         Display.setFullscreen(false);
     }
 
