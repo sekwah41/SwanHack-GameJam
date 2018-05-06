@@ -16,6 +16,7 @@ public class TextureManager {
     public int brick = 0;
     public int platform = 0;
     public int swanSpriteSheet = 0;
+    public int lifeCounter = 0;
 
     public TextureManager(BattleSwans game) {
         sekwahLogo = game.assets.loadTextureAndGetID(Assets.loadTexture("assets/images/sekwahLogo.png"), GL11.GL_LINEAR);
@@ -25,5 +26,6 @@ public class TextureManager {
         platform = game.assets.loadTextureAndGetID(Assets.loadTexture("assets/images/world/platform.png"), GL11.GL_NEAREST);
         background = game.assets.loadTextureAndGetID(Assets.loadTexture("assets/images/world/background.png"), GL11.GL_NEAREST);
         swanSpriteSheet = game.assets.loadTextureAndGetID(Assets.loadTexture("assets/images/swans/swansprite.png"), GL11.GL_NEAREST);
+        lifeCounter = game.assets.loadTextureAndGetID(Assets.loadTexture("assets/images/gui/life.png"), GL11.GL_NEAREST);
     }
 }

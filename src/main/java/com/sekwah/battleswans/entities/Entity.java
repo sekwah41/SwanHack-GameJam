@@ -10,7 +10,7 @@ public class Entity {
     public final float height;
     protected final Stage stage;
     private final World world;
-    public float posY;
+    public float posY = -40;
     public float posX;
 
     public float velX;
@@ -45,6 +45,10 @@ public class Entity {
     }
 
     public void doRender(){
+
+    }
+
+    public void kill() {
 
     }
 
