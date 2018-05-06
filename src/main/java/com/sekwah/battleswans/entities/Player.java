@@ -11,8 +11,6 @@ public class Player extends Entity {
     protected float playerWalkTime = 0;
     protected int playerWalkStage = 0;
 
-    protected boolean hasDoubleJumped = false;
-
     protected float speedBoost = 0;
 
     protected boolean isRising = false;
