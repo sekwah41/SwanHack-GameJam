@@ -209,7 +209,7 @@ public class Player extends Entity {
             return;
         }
         this.posX = 0;
-        this.posY = -40;
+        this.posY = -80;
         this.velX = 0;
         this.velY = 0;
         this.lives--;

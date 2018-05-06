@@ -91,7 +91,7 @@ public class TestStage extends Stage {
             // TODO add a proper winning screen
             audioPlayer.stop();
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
