@@ -29,8 +29,8 @@ public class BattleSwans {
         assets = new Assets(this);
         textures = new TextureManager(this);
 
-        //currentStage = new StartStage(this);
-        currentStage = new TestStage(this);
+        currentStage = new StartStage(this);
+        //currentStage = new TestStage(this);
         start();
     }
 
