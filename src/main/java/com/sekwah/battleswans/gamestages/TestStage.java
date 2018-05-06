@@ -1,6 +1,7 @@
 package com.sekwah.battleswans.gamestages;
 
 import com.sekwah.battleswans.BattleSwans;
+import com.sekwah.battleswans.audio.AudioPlayer;
 import com.sekwah.battleswans.entities.Entity;
 import com.sekwah.battleswans.entities.Player;
 import com.sekwah.battleswans.world.TestWorld;
@@ -10,6 +11,7 @@ import org.lwjgl.opengl.GL11;
 
 public class TestStage extends Stage {
 
+    private final AudioPlayer audioPlayer;
     float currentRotation = 0;
 
     private float cameraX = 0;
@@ -23,6 +25,8 @@ public class TestStage extends Stage {
 
     public TestStage(BattleSwans game) {
         super(game);
+        audioPlayer = new AudioPlayer("/assets/music/unloved.wav");
+        audioPlayer.loop(-1);
         //glClearColor(0.408F, 0.639F, 0.835F, 1F);
         world = new TestWorld(this, 500,500);
         player = new Player(this, world);

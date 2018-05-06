@@ -138,13 +138,14 @@ public class Stage {
 
 
     public void destroy() {
-        
+
     }
 
     public void keyUpdate(int key) {
-
-        /*case Keyboard.KEY_ESCAPE:
-        game.setIsRunning(false);
-        break;*/
+        switch(key) {
+            case Keyboard.KEY_ESCAPE:
+                game.setIsRunning(false);
+                break;
+        }
     }
 }

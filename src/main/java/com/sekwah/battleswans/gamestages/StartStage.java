@@ -2,6 +2,7 @@ package com.sekwah.battleswans.gamestages;
 
 import com.sekwah.battleswans.BattleSwans;
 import com.sekwah.battleswans.audio.AudioPlayer;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
@@ -9,11 +10,12 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class StartStage extends Stage {
 
+    private final AudioPlayer player;
     private int timeAlive = 0;
 
     public StartStage(BattleSwans game) {
         super(game);
-        AudioPlayer player = new AudioPlayer("/assets/sounds/Opening.wav");
+        player = new AudioPlayer("/assets/sounds/Opening.wav");
         player.play();
         this.game.assets.rebindTexture(this.game.textures.sekwahLogo);
     }
@@ -43,7 +45,11 @@ public class StartStage extends Stage {
         }
     }
 
-    public void destroy() {
+    public void keyUpdate(int key) {
+        if(timeAlive < 4300) {
+            game.currentStage = new MainMenuStage(game);
+            player.stop();
+        }
     }
 
 }

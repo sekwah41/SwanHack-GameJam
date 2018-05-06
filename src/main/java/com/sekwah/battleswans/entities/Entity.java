@@ -38,7 +38,8 @@ public class Entity {
         this.posY += velY;
 
         this.velX *= 0.9;
-        this.velY += 0.7;
+        this.velY += 2;
+        this.velY *= 0.9;
 
     }
 
