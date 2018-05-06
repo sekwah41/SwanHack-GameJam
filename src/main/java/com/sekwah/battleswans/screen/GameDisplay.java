@@ -87,7 +87,8 @@ public class GameDisplay {
 
     private void keyUpdate() {
         while(Keyboard.next()){
-            switch(Keyboard.getEventKey()){
+            int key = Keyboard.getEventKey();
+            switch(key){
                 case Keyboard.KEY_F11:
                     try{
                         if(fullscreen){
@@ -100,9 +101,10 @@ public class GameDisplay {
                         e.printStackTrace();
                     }
                     break;
-                case Keyboard.KEY_ESCAPE:
-                    game.setIsRunning(false);
-                    break;
+                default:
+                    if(game.currentStage != null) {
+                        game.currentStage.keyUpdate(key);
+                    }
             }
         }
 

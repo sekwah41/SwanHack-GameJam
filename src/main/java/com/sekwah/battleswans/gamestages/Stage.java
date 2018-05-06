@@ -2,6 +2,7 @@ package com.sekwah.battleswans.gamestages;
 
 import com.sekwah.battleswans.BattleSwans;
 import org.lwjgl.Sys;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 
@@ -39,6 +40,7 @@ public class Stage {
 
     public void doUpdate() {
         timePassed = timePassed();
+
     }
 
     public void doRender() {
@@ -135,4 +137,14 @@ public class Stage {
     }
 
 
+    public void destroy() {
+        
+    }
+
+    public void keyUpdate(int key) {
+
+        /*case Keyboard.KEY_ESCAPE:
+        game.setIsRunning(false);
+        break;*/
+    }
 }

@@ -11,19 +11,23 @@ public class Favicon {
     public static ByteBuffer[] load(){
         BufferedImage image16 = null;
         BufferedImage image32 = null;
+        BufferedImage image128 = null;
 
         try {
             image16 = ImageIO.read(Objects.requireNonNull(Favicon.class.getClassLoader().getResource("assets/images/favicon/favicon16.png")));
             image32 = ImageIO.read(Objects.requireNonNull(Favicon.class.getClassLoader().getResource("assets/images/favicon/favicon32.png")));
+            image128 = ImageIO.read(Objects.requireNonNull(Favicon.class.getClassLoader().getResource("assets/images/favicon/favicon128.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ByteBuffer[] byteBuffers = new ByteBuffer[2];
+        ByteBuffer[] byteBuffers = new ByteBuffer[3];
         assert image16 != null;
         byteBuffers[0] = convertToByteBuffer(image16);
         assert image32 != null;
         byteBuffers[1] = convertToByteBuffer(image32);
+        assert image128 != null;
+        byteBuffers[2] = convertToByteBuffer(image128);
 
         return byteBuffers;
     }

@@ -1,14 +1,17 @@
 package com.sekwah.battleswans;
 
 import com.sekwah.battleswans.assets.Assets;
+import com.sekwah.battleswans.assets.TextureManager;
 import com.sekwah.battleswans.gamestages.Stage;
 import com.sekwah.battleswans.gamestages.StartStage;
 import com.sekwah.battleswans.screen.GameDisplay;
+import com.sun.prism.Texture;
 import org.lwjgl.opengl.Display;
 
 public class BattleSwans {
 
     private final GameDisplay display;
+    public final TextureManager textures;
     private boolean isRunning;
 
     public Stage currentStage;
@@ -20,10 +23,10 @@ public class BattleSwans {
     public BattleSwans() {
         isRunning = true;
         display = new GameDisplay(this);
+        display.init();
 
         assets = new Assets(this);
-
-        display.init();
+        textures = new TextureManager(this);
 
         currentStage = new StartStage(this);
 
@@ -33,6 +36,7 @@ public class BattleSwans {
     private void start() {
         while(!Display.isCloseRequested() && isRunning){
             if(changeToStage != null){
+                currentStage.destroy();
                 currentStage = changeToStage;
                 changeToStage = null;
             }

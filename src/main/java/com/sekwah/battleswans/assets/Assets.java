@@ -28,8 +28,8 @@ public class Assets {
         try {
             return ImageIO.read(Assets.class.getClassLoader().getResource(texture));
         } catch (IOException e) {
-            e.printStackTrace();
             System.out.println("Could not load image: " + texture);
+            e.printStackTrace();
             return null;
         }
     }
