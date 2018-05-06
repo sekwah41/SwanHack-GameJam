@@ -37,6 +37,7 @@ public class GameDisplay {
             for (Dimension size : screenSizes) {
                 if (width > size.getWidth() && height - 100 > size.getHeight()) {
                     Display.setDisplayMode(new DisplayMode(size.getWidth(), size.getHeight()));
+                    this.screenSize = size;
                     System.out.println("Width: " + size.getWidth() + " Height: " + size.getHeight());
                     break;
                 }
@@ -48,7 +49,7 @@ public class GameDisplay {
 
             Display.create();
 
-            Display.setLocation(Display.getX(), Display.getDesktopDisplayMode().getHeight() / 2 - (Display.getHeight() + 30) / 2);
+            Display.setLocation(Display.getX(), (int) (Display.getDesktopDisplayMode().getHeight() / 2 - (Display.getDesktopDisplayMode().getWidth() + 30) / 2));
 
             //Mouse.setGrabbed(true);
 

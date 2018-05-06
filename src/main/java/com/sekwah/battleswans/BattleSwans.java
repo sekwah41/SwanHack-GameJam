@@ -49,4 +49,14 @@ public class BattleSwans {
     public void setIsRunning(boolean isRunning) {
         this.isRunning = isRunning;
     }
+
+    public float getWidth() {
+        return this.display.screenSize.getWidth();
+    }
+
+    public float getHeight() {
+        return this.display.screenSize.getHeight();
+    }
+
+
 }

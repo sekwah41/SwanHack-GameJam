@@ -51,10 +51,10 @@ public class Button {
     }
 
     public boolean isMouseOver(){
-        int mouseX = (int) (((float) Mouse.getX() / Display.getWidth()) * Display.getWidth());
-        int mouseY = (int) (((float) Mouse.getY() / Display.getHeight()) * Display.getHeight());
+        int mouseX = (int) (((float) Mouse.getX() / this.stage.game.getWidth()) * this.stage.game.getWidth());
+        int mouseY = (int) (((float) Mouse.getY() / this.stage.game.getHeight()) * this.stage.game.getHeight());
 
-        int collisionPosY = (int) (Display.getHeight() - this.posY);
+        int collisionPosY = (int) (this.stage.game.getHeight() - this.posY);
         if (mouseX < this.posX + (this.width / 2F) * size &&
                 mouseX > this.posX - (this.width / 2F) * size &&
                 mouseY < collisionPosY + (this.height / 2F) * size &&
