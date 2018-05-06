@@ -17,6 +17,7 @@ public class Entity {
     public float velY;
     public boolean onGround = false;
     public boolean hasJumped = false;
+    public boolean passDown = false;
 
     public Entity(Stage stage, float width, float height, World world){
         this.stage = stage;

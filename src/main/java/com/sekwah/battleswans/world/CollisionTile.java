@@ -1,8 +1,8 @@
 package com.sekwah.battleswans.world;
 
-public class CollisionTestTile extends Tile {
+public class CollisionTile extends Tile {
 
-    public CollisionTestTile(World world, float width, float height) {
+    public CollisionTile(World world, float width, float height) {
         super(world, width, height);
     }
 

@@ -6,15 +6,19 @@ public class TestWorld extends World {
     
     public TestWorld(Stage stage, int width, int height) {
         super(stage, width, height);
-        tiles = new Tile[3];
-        tiles[0] = new CollisionTestTile(this, 900,10);
+        tiles = new Tile[4];
+        tiles[0] = new CollisionTile(this, 900,10);
         tiles[0].posY = 150;
 
-        tiles[1] = new CollisionTestTile(this, 50,50);
+        tiles[1] = new CollisionTile(this, 50,50);
         tiles[1].posY = 130;
 
-        tiles[2] = new CollisionTestTile(this, 500,50);
-        tiles[2].posY = -150;
+        tiles[3] = new PlatformTile(this, 100,50);
+        tiles[3].posY = 100;
+        tiles[3].posX = 100;
+
+        tiles[2] = new CollisionTile(this, 500,50);
+        tiles[2].posY = -100;
     }
 
     public void doUpdate(long passedTime){

@@ -31,7 +31,7 @@ public class Tile {
         isOn(entity);
     }
 
-    private void willCollideX(Entity entity) {
+    protected void willCollideX(Entity entity) {
         float nextPosX = entity.posX + entity.velX;
         if (nextPosX - (entity.width / 2F) < this.posX + (this.width / 2F) &&
                 nextPosX + (entity.width / 2F) > this.posX - (this.width / 2F) &&
@@ -47,7 +47,7 @@ public class Tile {
         }
     }
 
-    private void willCollideY(Entity entity) {
+    protected void willCollideY(Entity entity) {
         float nextPosY = entity.posY + entity.velY;
         if (entity.posX - (entity.width / 2F) < this.posX + (this.width / 2F) &&
                 entity.posX + (entity.width / 2F) > this.posX - (this.width / 2F) &&
@@ -63,7 +63,7 @@ public class Tile {
         }
     }
 
-    private void isOn(Entity entity) {
+    protected void isOn(Entity entity) {
         float offsetPosY = entity.posY + 5;
         if (entity.posX - (entity.width / 2F) < this.posX + (this.width / 2F) &&
                 entity.posX + (entity.width / 2F) > this.posX - (this.width / 2F) &&

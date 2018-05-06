@@ -11,8 +11,6 @@ public class Player extends Entity {
     protected float playerWalkTime = 0;
     protected int playerWalkStage = 0;
 
-    protected boolean hasDoubleJumped = false;
-
     protected float speedBoost = 0;
 
     protected boolean isRising = false;
@@ -46,6 +44,8 @@ public class Player extends Entity {
         if(playerWalkStage > 7){
             playerWalkStage = 0;
         }
+
+        this.passDown = Keyboard.isKeyDown(Keyboard.KEY_S);
 
         speedBoost *= 0.5;
 
