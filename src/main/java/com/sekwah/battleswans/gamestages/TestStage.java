@@ -6,12 +6,14 @@ import com.sekwah.battleswans.entities.Entity;
 import com.sekwah.battleswans.entities.Player;
 import com.sekwah.battleswans.world.TestWorld;
 import com.sekwah.battleswans.world.World;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 public class TestStage extends Stage {
 
     private final AudioPlayer audioPlayer;
+    private final Player player2;
     float currentRotation = 0;
 
     private float cameraX = 0;
@@ -29,7 +31,8 @@ public class TestStage extends Stage {
         audioPlayer.loop(-1);
         //glClearColor(0.408F, 0.639F, 0.835F, 1F);
         world = new TestWorld(this, 500,500);
-        player = new Player(this, world);
+        player = new Player(this, world, Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S, Keyboard.KEY_SPACE, Keyboard.KEY_LMENU);
+        player2 = new Player(this, world, Keyboard.KEY_NUMPAD4, Keyboard.KEY_NUMPAD6, Keyboard.KEY_NUMPAD8, Keyboard.KEY_NUMPAD5, Keyboard.KEY_NUMPAD0, Keyboard.KEY_NUMPADENTER);
     }
 
     public void setupStage(){
@@ -39,12 +42,13 @@ public class TestStage extends Stage {
     public void doUpdate() {
         super.doUpdate();
 
-        cameraX += (float) (-player.posX - cameraX) / 20F;
-        cameraY += (float) (-player.posY - cameraY) / 20F;
+        cameraX += (-((player.posX + player2.posX) / 2f) - cameraX) / 20F;
+        cameraY += (-((player.posY + player2.posY) / 2f) - cameraY) / 20F;
 
         world.doUpdate();
 
         player.doUpdate(timePassed);
+        player2.doUpdate(timePassed);
     }
 
     public void doRender() {
@@ -53,14 +57,16 @@ public class TestStage extends Stage {
         GL11.glPushMatrix();
         game.assets.rebindTexture(game.textures.background);
         drawTexture(game.getWidth() / 2f, game.getHeight() / 2f + 40, game.assets.currentTextureSize.width,game.assets.currentTextureSize.height,
-                game.getHeight() / game.assets.currentTextureSize.height + 0.93f);
+                game.getHeight() / game.assets.currentTextureSize.height + 0.43f);
         GL11.glTranslatef(cameraX + game.getWidth() / 2,cameraY + game.getHeight() / 2F,0);
         game.assets.rebindTexture(game.textures.testSpriteSheet);
         /*for(Entity entity: renderEntities){
             entity.doRender();
         }*/
         world.doRender();
+        game.assets.rebindTexture(game.textures.swanSpriteSheet);
         player.doRender();
+        player2.doRender();
 
         GL11.glPopMatrix();
 
