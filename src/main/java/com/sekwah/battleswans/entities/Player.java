@@ -82,13 +82,14 @@ public class Player extends Entity {
             this.currentPose = this.attackProgress / 2;
             this.attackProgress++;
             if(this.currentPose == 3) {
+
             }
             if(this.currentPose == 6) {
                 this.attackProgress = -1;
                 this.currentPose = 0;
             }
         }
-        else if(Keyboard.isKeyDown(this.attack) && this.attackProgress == 0) {
+        else if(Keyboard.isKeyDown(this.attack) && !this.passDown && this.attackProgress == 0) {
             attackProgress = 1;
         }
         else if(attackProgress == -1) {
