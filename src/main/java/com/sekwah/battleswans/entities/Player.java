@@ -3,6 +3,7 @@ package com.sekwah.battleswans.entities;
 import com.sekwah.battleswans.audio.AudioPlayer;
 import com.sekwah.battleswans.entities.anims.SpritePoseInfo;
 import com.sekwah.battleswans.gamestages.Stage;
+import com.sekwah.battleswans.gamestages.TestStage;
 import com.sekwah.battleswans.world.World;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -44,10 +45,13 @@ public class Player extends Entity {
             new SpritePoseInfo(90,28,58,28, -9.5f, -0.5f),
             new SpritePoseInfo(42, 28,48,28, -4.5f, -0.5f),
             new SpritePoseInfo(0, 55,58,26, -9.5f, 3f),
-            new SpritePoseInfo(58, 56,59,26, -10f, 3f)};
+            new SpritePoseInfo(58, 56,59,26, -10f, 3f),
+            new SpritePoseInfo(155, 0,55,34, -9.5f, -2f)};
     private AudioPlayer honk = new AudioPlayer("/assets/sounds/honk.wav");
 
     private boolean gliding;
+
+    public Player enemy;
 
     public Player(Stage stage, World world, int left, int right, int up, int down, int attack, int hiss) {
         super(stage, 70, 55, world);
@@ -67,11 +71,7 @@ public class Player extends Entity {
         this.gliding = false;
 
         if(this.posY > 600) {
-            this.posX = 0;
-            this.posY = -40;
-            this.velX = 0;
-            this.velY = 0;
-            this.lives--;
+            this.kill();
         }
 
         if(this.onGround){
@@ -81,6 +81,8 @@ public class Player extends Entity {
         if(this.attackProgress > 0) {
             this.currentPose = this.attackProgress / 2;
             this.attackProgress++;
+            if(this.currentPose == 3) {
+            }
             if(this.currentPose == 6) {
                 this.attackProgress = -1;
                 this.currentPose = 0;
@@ -142,9 +144,16 @@ public class Player extends Entity {
 
     public void doRender(){
         //GL11.glDisable(GL11.GL_TEXTURE_2D);
+        glPushMatrix();
+
+        glTranslatef(posX, posY,0);
         int poseID = currentPose;
         if(poseID == 0) {
-            if(this.hissing && this.gliding) {
+            if(!this.gliding && this.passDown && !this.onGround) {
+                glRotatef(40 * this.playerDirection, 0,0,1);
+                poseID = 8;
+            }
+            else if(this.hissing && this.gliding) {
                 poseID = 7;
             }
             else if(this.hissing) {
@@ -156,9 +165,6 @@ public class Player extends Entity {
         }
         SpritePoseInfo pose = poseInfo[poseID];
         float scale = 2;
-        glPushMatrix();
-
-        glTranslatef(posX, posY,0);
         glScalef(scale * -this.playerDirection, scale, scale);
         if(playerWalkTime != 0) {
             stage.drawTexture((float) (0 + Math.cos(playerWalkTime / 50f + Math.PI)), (float) (10 + Math.sin(playerWalkTime / 50f)),7,8);
@@ -176,5 +182,14 @@ public class Player extends Entity {
         }
         glPopMatrix();
         //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    }
+
+    @Override
+    public void kill() {
+        this.posX = 0;
+        this.posY = -40;
+        this.velX = 0;
+        this.velY = 0;
+        this.lives--;
     }
 }

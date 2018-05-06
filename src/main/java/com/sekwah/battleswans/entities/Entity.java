@@ -48,5 +48,9 @@ public class Entity {
 
     }
 
+    public void kill() {
+
+    }
+
 
 }

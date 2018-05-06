@@ -33,6 +33,8 @@ public class TestStage extends Stage {
         world = new TestWorld(this, 500,500);
         player = new Player(this, world, Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S, Keyboard.KEY_SPACE, Keyboard.KEY_LMENU);
         player2 = new Player(this, world, Keyboard.KEY_NUMPAD4, Keyboard.KEY_NUMPAD6, Keyboard.KEY_NUMPAD8, Keyboard.KEY_NUMPAD5, Keyboard.KEY_NUMPAD0, Keyboard.KEY_NUMPADENTER);
+        player.enemy = player2;
+        player2.enemy = player;
     }
 
     public void setupStage(){
@@ -83,6 +85,17 @@ public class TestStage extends Stage {
         }
         for(int i = 0; i < player2.lives; i++) {
             drawTexture(game.getWidth() - 128 - i * 64,40, 16,16, 4, 4, 0, 16, 16, 0,  0);
+        }
+
+        if(this.player.lives == 0 || this.player2.lives == 0) {
+            // TODO add a proper winning screen
+            audioPlayer.stop();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            game.currentStage = new TestStage(game);
         }
     }
 
