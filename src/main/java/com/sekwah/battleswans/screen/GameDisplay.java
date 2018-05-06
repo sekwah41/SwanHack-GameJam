@@ -63,6 +63,8 @@ public class GameDisplay {
 
             glClearColor(0.0F, 0.0F, 0.0F, 0F);
 
+            setFullscreen();
+
         } catch (LWJGLException e) {
             e.printStackTrace();
         }

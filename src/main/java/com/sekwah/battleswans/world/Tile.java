@@ -72,4 +72,10 @@ public class Tile {
             entity.onGround = true;
         }
     }
+
+    public Tile setPos(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
+        return this;
+    }
 }
