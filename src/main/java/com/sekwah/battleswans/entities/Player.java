@@ -3,10 +3,8 @@ package com.sekwah.battleswans.entities;
 import com.sekwah.battleswans.audio.AudioPlayer;
 import com.sekwah.battleswans.entities.anims.SpritePoseInfo;
 import com.sekwah.battleswans.gamestages.Stage;
-import com.sekwah.battleswans.gamestages.TestStage;
 import com.sekwah.battleswans.world.World;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -18,6 +16,8 @@ public class Player extends Entity {
     private final int down;
     private final int attack;
     private final int hiss;
+
+    public int invincibleTicks = 90;
 
     public int lives = 3;
 
@@ -82,14 +82,16 @@ public class Player extends Entity {
             this.currentPose = this.attackProgress / 2;
             this.attackProgress++;
             if(this.currentPose == 3) {
-
+                if(this.positionInEnemy(this.posX + (this.width / 2f + 20) * this.playerDirection, this.posY)) {
+                    this.enemy.kill();
+                }
             }
             if(this.currentPose == 6) {
                 this.attackProgress = -1;
                 this.currentPose = 0;
             }
         }
-        else if(Keyboard.isKeyDown(this.attack) && !this.passDown && this.attackProgress == 0) {
+        else if(Keyboard.isKeyDown(this.attack) && !(this.passDown && !this.onGround) && this.attackProgress == 0) {
             attackProgress = 1;
         }
         else if(attackProgress == -1) {
@@ -141,9 +143,25 @@ public class Player extends Entity {
             }
         }
 
+        if(!this.gliding && this.passDown && !this.onGround) {
+            if(this.positionInEnemy(this.posX + (this.width / 2f) * this.playerDirection, this.posY + this.height / 2) &&
+                    this.posY < enemy.posY) {
+                this.enemy.kill();
+            }
+        }
+
+    }
+
+    private boolean positionInEnemy(float x, float y) {
+        float halfW = enemy.width / 2f;
+        float halfH = enemy.height / 2f;
+        return (enemy.posX - halfW - 10 < x) && (enemy.posX + halfW + 10 > x) && (enemy.posY - halfH < y) && (enemy.posY + halfH > y);
     }
 
     public void doRender(){
+        if(invincibleTicks > 0 && invincibleTicks-- % 10 > 5) {
+            return;
+        }
         //GL11.glDisable(GL11.GL_TEXTURE_2D);
         glPushMatrix();
 
@@ -187,10 +205,14 @@ public class Player extends Entity {
 
     @Override
     public void kill() {
+        if(invincibleTicks > 0) {
+            return;
+        }
         this.posX = 0;
         this.posY = -40;
         this.velX = 0;
         this.velY = 0;
         this.lives--;
+        this.invincibleTicks = 90;
     }
 }
