@@ -42,8 +42,8 @@ public class TestStage extends Stage {
     public void doUpdate() {
         super.doUpdate();
 
-        cameraX += (-((player.posX + player2.posX) / 2f) - cameraX) / 20F;
-        cameraY += (-((player.posY + player2.posY) / 2f) - cameraY) / 20F;
+        cameraX += (-((player.posX + player2.posX) / 2f) - cameraX) / 10F;
+        cameraY += (-((player.posY + player2.posY) / 2f) - cameraY) / 10F;
 
         world.doUpdate();
 
@@ -58,7 +58,16 @@ public class TestStage extends Stage {
         game.assets.rebindTexture(game.textures.background);
         drawTexture(game.getWidth() / 2f, game.getHeight() / 2f + 40, game.assets.currentTextureSize.width,game.assets.currentTextureSize.height,
                 game.getHeight() / game.assets.currentTextureSize.height + 0.43f);
-        GL11.glTranslatef(cameraX + game.getWidth() / 2,cameraY + game.getHeight() / 2F,0);
+        float playerDistanceX = Math.abs(player.posX - player2.posX);
+        float playerDistanceY = Math.abs(player.posY - player2.posY);
+        if(playerDistanceX > game.getWidth() - 500 || playerDistanceY > game.getHeight() - 300) {
+            float scale = Math.min((game.getWidth() - 500) / playerDistanceX, (game.getHeight() - 300) / playerDistanceY);
+            GL11.glTranslatef(cameraX * scale + game.getWidth() / 2,cameraY * scale + game.getHeight() / 2F,0);
+            GL11.glScalef(scale,scale,scale);
+        }
+        else {
+            GL11.glTranslatef(cameraX + game.getWidth() / 2,cameraY + game.getHeight() / 2F,0);
+        }
         game.assets.rebindTexture(game.textures.testSpriteSheet);
         /*for(Entity entity: renderEntities){
             entity.doRender();
@@ -67,9 +76,14 @@ public class TestStage extends Stage {
         game.assets.rebindTexture(game.textures.swanSpriteSheet);
         player.doRender();
         player2.doRender();
-
         GL11.glPopMatrix();
-
+        game.assets.rebindTexture(game.textures.lifeCounter);
+        for(int i = 0; i < player.lives; i++) {
+            drawTexture(40 + i * 64,40, 16,16, -4, 4, 0, 16, 16, 0,  0);
+        }
+        for(int i = 0; i < player2.lives; i++) {
+            drawTexture(game.getWidth() - 128 - i * 64,40, 16,16, 4, 4, 0, 16, 16, 0,  0);
+        }
     }
 
 

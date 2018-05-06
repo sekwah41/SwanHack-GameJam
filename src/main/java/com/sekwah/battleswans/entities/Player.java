@@ -17,6 +17,9 @@ public class Player extends Entity {
     private final int down;
     private final int attack;
     private final int hiss;
+
+    public int lives = 3;
+
     protected int playerDirection = 1;
 
     protected float playerWalkTime = 0;
@@ -65,9 +68,10 @@ public class Player extends Entity {
 
         if(this.posY > 600) {
             this.posX = 0;
-            this.posY = 0;
+            this.posY = -40;
             this.velX = 0;
             this.velY = 0;
+            this.lives--;
         }
 
         if(this.onGround){
@@ -90,6 +94,9 @@ public class Player extends Entity {
         }
 
         this.passDown = Keyboard.isKeyDown(this.down);
+        if(!this.onGround && this.passDown) {
+            this.velY += 1;
+        }
 
         speedBoost *= 0.5;
 
@@ -126,6 +133,7 @@ public class Player extends Entity {
             }
             else if(this.velY > 4.2f) {
                 this.velY = 4.2f;
+                this.speedBoost = 14;
                 this.gliding = true;
             }
         }
