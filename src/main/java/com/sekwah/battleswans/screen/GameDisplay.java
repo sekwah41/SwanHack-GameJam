@@ -18,8 +18,10 @@ public class GameDisplay {
 
     private boolean fullscreen = false;
 
-    private Dimension[] screenSizes = {new Dimension(1920, 1080), new Dimension(1680, 1050), new Dimension(1366, 768),
-            new Dimension(1280, 1024), new Dimension(1280, 800), new Dimension(1024, 768), new Dimension(800, 500)};
+    private Dimension[] screenSizes = {new Dimension(1280, 800)};
+
+    /*private Dimension[] screenSizes = {new Dimension(1920, 1080), new Dimension(1680, 1050), new Dimension(1366, 768),
+            new Dimension(1280, 1024), new Dimension(1280, 800), new Dimension(1024, 768), new Dimension(800, 500)};*/
     public Dimension screenSize;
 
     public GameDisplay(BattleSwans game) {
@@ -49,8 +51,6 @@ public class GameDisplay {
 
             Display.create();
 
-            Display.setLocation(Display.getX(), (int) (Display.getDesktopDisplayMode().getHeight() / 2 - (Display.getDesktopDisplayMode().getWidth() + 30) / 2));
-
             //Mouse.setGrabbed(true);
 
             glMatrixMode(GL_PROJECTION);
@@ -63,7 +63,7 @@ public class GameDisplay {
 
             glClearColor(0.0F, 0.0F, 0.0F, 0F);
 
-            setFullscreen();
+            //setFullscreen();
 
         } catch (LWJGLException e) {
             e.printStackTrace();
