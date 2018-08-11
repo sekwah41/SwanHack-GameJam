@@ -2,6 +2,7 @@ package com.sekwah.battleswans.entities;
 
 
 import com.sekwah.battleswans.gamestages.Stage;
+import com.sekwah.battleswans.world.Tile;
 import com.sekwah.battleswans.world.World;
 
 public class Entity {
@@ -12,6 +13,8 @@ public class Entity {
     private final World world;
     public float posY = -40;
     public float posX;
+
+    Tile entityCollision;
 
     public float velX;
     public float velY;
@@ -24,6 +27,12 @@ public class Entity {
         this.width = width;
         this.height = height;
         this.world = world;
+        this.world.addEntity(this);
+        this.entityCollision = new Tile(world, width, height);
+    }
+
+    public Tile getEntityCollision() {
+        return this.entityCollision;
     }
 
     public void setPos(float x, float y) {
@@ -41,6 +50,9 @@ public class Entity {
         this.velX *= 0.9;
         this.velY += 2;
         this.velY *= 0.9;
+
+        this.entityCollision.posX = this.posX;
+        this.entityCollision.posY = this.posY;
 
     }
 

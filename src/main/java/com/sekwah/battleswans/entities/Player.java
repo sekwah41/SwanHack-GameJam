@@ -144,7 +144,7 @@ public class Player extends Entity {
         }
 
         if(!this.gliding && this.passDown && !this.onGround) {
-            if(this.positionInEnemy(this.posX + (this.width / 2f) * this.playerDirection, this.posY + this.height / 2) &&
+            if(this.positionInEnemy(this.posX + (this.width / 2f) * this.playerDirection, this.posY + this.height / 2 + 17) &&
                     this.posY < enemy.posY) {
                 this.enemy.kill();
             }
