@@ -11,8 +11,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 public class TestStage extends Stage {
-
-    private final AudioPlayer audioPlayer;
     private final Player player2;
     float currentRotation = 0;
 
@@ -27,8 +25,6 @@ public class TestStage extends Stage {
 
     public TestStage(BattleSwans game) {
         super(game);
-        audioPlayer = new AudioPlayer("/assets/music/unloved.wav");
-        audioPlayer.loop(-1);
         //glClearColor(0.408F, 0.639F, 0.835F, 1F);
         world = new TestWorld(this, 500,500);
         player = new Player(this, world, Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S, Keyboard.KEY_SPACE, Keyboard.KEY_LMENU);
@@ -89,7 +85,6 @@ public class TestStage extends Stage {
 
         if(this.player.lives == 0 || this.player2.lives == 0) {
             // TODO add a proper winning screen
-            audioPlayer.stop();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

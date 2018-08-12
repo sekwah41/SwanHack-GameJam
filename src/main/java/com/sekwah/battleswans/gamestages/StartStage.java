@@ -15,8 +15,9 @@ public class StartStage extends Stage {
 
     public StartStage(BattleSwans game) {
         super(game);
-        player = new AudioPlayer("/assets/sounds/Opening.wav");
-        player.play();
+        player = new AudioPlayer("/assets/music/Battle Swan.wav");
+        player.loop(-1);
+        player.setLoopPoints(1411460, 2823080);
         this.game.assets.rebindTexture(this.game.textures.sekwahLogo);
     }
 
@@ -48,7 +49,6 @@ public class StartStage extends Stage {
     public void keyUpdate(int key) {
         if(timeAlive < 4300) {
             game.currentStage = new MainMenuStage(game);
-            player.stop();
         }
     }
 

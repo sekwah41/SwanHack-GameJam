@@ -13,7 +13,6 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainMenuStage extends Stage {
 
-    private final AudioPlayer player;
     private int timeAlive = 0;
 
     float levelFade = 800;
@@ -22,8 +21,6 @@ public class MainMenuStage extends Stage {
 
     public MainMenuStage(BattleSwans game) {
         super(game);
-        player = new AudioPlayer("/assets/music/intermission.wav");
-        player.loop(-1);
         glClearColor(0.408F, 0.639F, 0.835F, 1F);
         buttons.add(new PlayButton(this, Display.getWidth() / 2, 350, 75, 25, 2.5F, 0,0));
     }
@@ -58,11 +55,6 @@ public class MainMenuStage extends Stage {
             glColor4f(1F, 1F, 1F, 1F);
             glEnable(GL_TEXTURE_2D);
         }
-    }
-
-    @Override
-    public void destroy() {
-        player.stop();
     }
 
 }
