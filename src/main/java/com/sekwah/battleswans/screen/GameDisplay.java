@@ -22,7 +22,7 @@ public class GameDisplay {
 
     /*private Dimension[] screenSizes = {new Dimension(1920, 1080), new Dimension(1680, 1050), new Dimension(1366, 768),
             new Dimension(1280, 1024), new Dimension(1280, 800), new Dimension(1024, 768), new Dimension(800, 500)};*/
-    public Dimension screenSize;
+    public Dimension screenSize = new Dimension(1280, 800);
 
     public GameDisplay(BattleSwans game) {
         this.game = game;
