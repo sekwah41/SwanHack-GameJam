@@ -120,7 +120,7 @@ public class GameDisplay {
         Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
 
         glMatrixMode(GL_MATRIX_MODE);
-        screenSize = new Dimension(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
+        //screenSize = new Dimension(Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
         glViewport(0, 0, Display.getDesktopDisplayMode().getWidth(), Display.getDesktopDisplayMode().getHeight());
 
     }

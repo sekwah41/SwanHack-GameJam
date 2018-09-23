@@ -10,14 +10,14 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class StartStage extends Stage {
 
-    private final AudioPlayer player;
+    //private final AudioPlayer player;
     private int timeAlive = 0;
 
     public StartStage(BattleSwans game) {
         super(game);
-        player = new AudioPlayer("/assets/music/Battle Swan.wav");
+        /*player = new AudioPlayer("/assets/music/Battle Swan.wav");
         player.loop(-1);
-        player.setLoopPoints(1411460, 2823080);
+        player.setLoopPoints(1411460, 2823080);*/
         this.game.assets.rebindTexture(this.game.textures.sekwahLogo);
     }
 
@@ -42,13 +42,15 @@ public class StartStage extends Stage {
             glColor3f(1F,1F,1F);
         }
         else if(timeAlive > 4300){
-            game.currentStage = new MainMenuStage(game);
+            //game.currentStage = new MainMenuStage(game);
+            game.currentStage = new TestStage(game);
         }
     }
 
     public void keyUpdate(int key) {
         if(timeAlive < 4300) {
-            game.currentStage = new MainMenuStage(game);
+            //game.currentStage = new MainMenuStage(game);
+            game.currentStage = new TestStage(game);
         }
     }
 

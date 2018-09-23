@@ -28,7 +28,7 @@ public class TestStage extends Stage {
         //glClearColor(0.408F, 0.639F, 0.835F, 1F);
         world = new TestWorld(this, 500,500);
         player = new Player(this, world, Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S, Keyboard.KEY_SPACE, Keyboard.KEY_LMENU);
-        player2 = new Player(this, world, Keyboard.KEY_NUMPAD4, Keyboard.KEY_NUMPAD6, Keyboard.KEY_NUMPAD8, Keyboard.KEY_NUMPAD5, Keyboard.KEY_NUMPAD0, Keyboard.KEY_NUMPADENTER);
+        player2 = new Player(this, world, Keyboard.KEY_NUMPAD4, Keyboard.KEY_NUMPAD6, Keyboard.KEY_NUMPAD8, Keyboard.KEY_NUMPAD5, Keyboard.KEY_NUMPAD0, Keyboard.KEY_RETURN);
         player.enemy = player2;
         player2.enemy = player;
     }
