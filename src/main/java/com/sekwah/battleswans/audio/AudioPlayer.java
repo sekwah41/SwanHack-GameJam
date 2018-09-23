@@ -6,6 +6,9 @@ import java.io.File;
 public class AudioPlayer {
 
     private Clip clip;
+    private DataLine.Info info;
+
+    private boolean audioLoaded = false;
 
     // May not be best way of doing all the sounds but itll work for now. See if possible to change to a single channel and
     //  track sounds
@@ -26,11 +29,14 @@ public class AudioPlayer {
                     baseFormat.getSampleRate(),
                     false
             );
-            AudioInputStream dais =
+            /*AudioInputStream dais =
                     AudioSystem.getAudioInputStream(
-                            decodeFormat, ais);
+                            decodeFormat, ais);*/
+            info = new DataLine.Info(Clip.class, baseFormat);
             clip = AudioSystem.getClip();
-            clip.open(dais);
+            //clip.open(dais);
+            clip.open(ais);
+            audioLoaded = true;
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -94,7 +100,7 @@ public class AudioPlayer {
     }
 
     public void play() {
-        if(clip == null) return;
+        if(clip == null || !audioLoaded) return;
         //System.out.println("");
         //System.out.println(clip.getMicrosecondLength());
         //System.out.println(clip.isRunning());
@@ -123,7 +129,7 @@ public class AudioPlayer {
     }
 
     public void stop() {
-        if(clip.isRunning()) clip.stop();
+        if(clip.isRunning() && audioLoaded) clip.stop();
     }
 
     public void close() {
