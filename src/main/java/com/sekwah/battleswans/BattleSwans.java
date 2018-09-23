@@ -4,9 +4,7 @@ import com.sekwah.battleswans.assets.Assets;
 import com.sekwah.battleswans.assets.TextureManager;
 import com.sekwah.battleswans.gamestages.Stage;
 import com.sekwah.battleswans.gamestages.StartStage;
-import com.sekwah.battleswans.gamestages.TestStage;
 import com.sekwah.battleswans.screen.GameDisplay;
-import com.sun.prism.Texture;
 import org.lwjgl.opengl.Display;
 
 public class BattleSwans {
