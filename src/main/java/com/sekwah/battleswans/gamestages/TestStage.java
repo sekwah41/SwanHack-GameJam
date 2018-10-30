@@ -10,6 +10,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
+import static org.lwjgl.opengl.GL11.*;
+
 public class TestStage extends Stage {
     private final Player player2;
     float currentRotation = 0;
@@ -95,6 +97,19 @@ public class TestStage extends Stage {
     }
 
 
+    public void keyUpdate(int key) {
+        super.keyUpdate(key);
+        switch(key) {
+            case Keyboard.KEY_F4:
+                glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+                glDisable(GL_TEXTURE_2D);
+                break;
+            case Keyboard.KEY_F5:
+                glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+                glEnable(GL_TEXTURE_2D);
+                break;
+        }
+    }
 
 
 }

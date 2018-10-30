@@ -200,7 +200,6 @@ public class Player extends Entity {
             stage.drawTexture(pose.xCenterOffset,pose.yCenterOffset - 4, pose.width, pose.height, 1,pose.xTexOffset, pose.yTexOffset);
         }
         glPopMatrix();
-        //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     }
 
     @Override
